@@ -1,9 +1,7 @@
 import { StarBorder, Drafts, Send, MoveToInbox } from "@mui/icons-material";
 
 // import MoveToInboxIcon from '@mui/icons-material/MoveToInbox'
-
 // DRAWER.JS
-
 const menu = [
   "1 HOME",
   "1.1 INDEX",
@@ -65,180 +63,7 @@ const lists = [
 
 // const [id] = useState(_uniqueId('tvpanel-'))
 // GAME.JS
-// const panelObj = [
-//   {
-//     name: "Object002",
-//     bloom: true,
-//     textureFlipY: false,
-//     color: "#ffffff",
-//     textureRotation: 360,
-//     texture: "/img/test.png",
-//     videoTexture:
-//       "/video/1.SingaporeFoodFestival2022,bySingaporeTourismBoard.mp4",
-//   },
-//   {
-//     name: "Object003",
-//     bloom: true,
-//     textureFlipY: true,
-//     color: "#ffffff",
-//     textureRotation: 180,
-//     texture: "/img/test.png",
-//     videoTexture:
-//       "/video/2.VirtualPhDOpenHouse,bySingaporeManagementUniversity.mp4",
-//   },
-//   {
-//     name: "Object004",
-//     bloom: true,
-//     textureFlipY: false,
-//     color: "#ffffff",
-//     textureRotation: 360,
-//     texture: "/img/test.png",
-//     videoTexture:
-//       "/video/3.IloominationVirtualShowroom,byNEAClean&GreenSingapore.mp4",
-//   },
-//   {
-//     name: "Object005",
-//     bloom: true,
-//     textureFlipY: true,
-//     color: "#ffffff",
-//     textureRotation: 180,
-//     texture: "/img/test.png",
-//     videoTexture: "/video/4.BYDVirtualCarShowroom,bySTEngineering.mp4",
-//   },
-//   {
-//     name: "Object006",
-//     bloom: true,
-//     textureFlipY: false,
-//     color: "#ffffff",
-//     textureRotation: 360,
-//     texture: "/img/test.png",
-//     videoTexture:
-//       "/video/5.CuriographyVirtualExhibition,bySingaporeAssociationforMentalHealth.mp4",
-//   },
-//   {
-//     name: "Object007",
-//     bloom: true,
-//     textureFlipY: true,
-//     color: "#ffffff",
-//     textureRotation: 180,
-//     texture: "/img/test.png",
-//     videoTexture:
-//       "/video/6.EnvironmentalAwarenessCampaign,byProcter&Gamble.mp4",
-//   },
-//   {
-//     name: "Object008",
-//     bloom: true,
-//     textureFlipY: false,
-//     color: "#ffffff",
-//     textureRotation: 360,
-//     texture: "/img/test.png",
-//     videoTexture:
-//       "/video/7.StarPropertyAwards2022VirtualShowcase,byStarMediaGroup.mp4",
-//   },
-//   {
-//     name: "Object009",
-//     bloom: true,
-//     textureFlipY: true,
-//     color: "#ffffff",
-//     textureRotation: 180,
-//     texture: "/img/test.png",
-//     videoTexture: "/video/8.SabahVirtualTravelFair,bySabahTourismBoard.mp4",
-//   },
-//   {
-//     name: "Object010",
-//     bloom: true,
-//     textureFlipY: false,
-//     color: "#ffffff",
-//     textureRotation: 360,
-//     texture: "/img/test.png",
-//     videoTexture:
-//       "/video/9.VirtualExhibition&InternationalConference,byUniversityScienceMalaysia.mp4",
-//   },
-//   {
-//     name: "Object011",
-//     bloom: true,
-//     textureFlipY: true,
-//     color: "#ffffff",
-//     textureRotation: 180,
-//     texture: "/img/test.png",
-//     videoTexture: "/video/10.VirtualSalesLobbybydr.MCTbyKevolve.mp4",
-//   },
-//   {
-//     name: "Object012",
-//     bloom: true,
-//     textureFlipY: false,
-//     color: "#ffffff",
-//     textureRotation: 360,
-//     texture: "/img/test.png",
-//     videoTexture:
-//       "/video/11.VirtualStationeryStore,byNavneetEducationLimited.mp4",
-//   },
-//   {
-//     name: "Object013",
-//     bloom: true,
-//     textureFlipY: true,
-//     color: "#ffffff",
-//     textureRotation: 180,
-//     texture: "/img/test.png",
-
-//     videoTexture: "/video/12.EdenVirtualWorld,EdenlogyPteLtd.mp4",
-//   },
-//   {
-//     name: "Object014",
-//     bloom: true,
-//     textureFlipY: false,
-//     color: "#ffffff",
-//     textureRotation: 360,
-//     texture: "/img/test.png",
-
-//     videoTexture:
-//       "/video/13.KualaLumpurVirtualPhotographyFestival,byPCPPublications.mp4",
-//   },
-//   {
-//     name: "Object015",
-//     bloom: true,
-//     textureFlipY: true,
-//     color: "#ffffff",
-//     textureRotation: 180,
-//     texture: "/img/test.png",
-
-//     videoTexture:
-//       "/video/14.VirtualAngelicaShowUnite-Launching,byJohorLand.mp4",
-//   },
-//   {
-//     name: "Object016",
-//     bloom: true,
-//     textureFlipY: false,
-//     color: "#ffffff",
-//     textureRotation: 360,
-//     texture: "/img/test.png",
-
-//     videoTexture:
-//       "/video/15.HorizonSquareVirtualShowcase,byTopHillsRealty(M)Sdn.Bhd..mp4",
-//   },
-//   {
-//     name: "Object017",
-//     bloom: true,
-//     textureFlipY: true,
-//     color: "#ffffff",
-//     textureRotation: 180,
-//     texture: "/img/test.png",
-
-//     videoTexture: "/video/16.VirtualBazaar(Localised),ByTheRefectory.mp4",
-//   },
-//   {
-//     name: "Object018",
-//     bloom: true,
-//     textureFlipY: false,
-//     color: "#ffffff",
-//     textureRotation: 360,
-//     texture: "/img/test.png",
-
-//     videoTexture: "/video/17.VirtualBistroBar,byMemeBistroBar.mp4",
-//   },
-// ];
-
-const panelObj1 = [
+const panelObj = [
   {
     name: "Object002",
     bloom: false,
@@ -421,6 +246,179 @@ const panelObj1 = [
     videoTexture: "video/17MemeBistroBar.mp4",
   },
 ];
+
+// Hamirul
+// const panelObj = [
+//   {
+//     name: "Object002",
+//     bloom: true,
+//     textureFlipY: false,
+//     color: "#ffffff",
+//     textureRotation: 360,
+//     texture: "img/1SingaporeFoodFestival2022.png",
+//     videoTexture: "video/1SingaporeFoodFestival2022.mp4",
+//   },
+//   {
+//     name: "Object003",
+//     bloom: true,
+//     textureFlipY: true,
+//     color: "#ffffff",
+//     textureRotation: 180,
+//     texture: "/img/test.png",
+//     videoTexture:
+//       "/video/2.VirtualPhDOpenHouse,bySingaporeManagementUniversity.mp4",
+//   },
+//   {
+//     name: "Object004",
+//     bloom: true,
+//     textureFlipY: false,
+//     color: "#ffffff",
+//     textureRotation: 360,
+//     texture: "/img/test.png",
+//     videoTexture:
+//       "/video/3.IloominationVirtualShowroom,byNEAClean&GreenSingapore.mp4",
+//   },
+//   {
+//     name: "Object005",
+//     bloom: true,
+//     textureFlipY: true,
+//     color: "#ffffff",
+//     textureRotation: 180,
+//     texture: "/img/test.png",
+//     videoTexture: "/video/4.BYDVirtualCarShowroom,bySTEngineering.mp4",
+//   },
+//   {
+//     name: "Object006",
+//     bloom: true,
+//     textureFlipY: false,
+//     color: "#ffffff",
+//     textureRotation: 360,
+//     texture: "/img/test.png",
+//     videoTexture:
+//       "/video/5.CuriographyVirtualExhibition,bySingaporeAssociationforMentalHealth.mp4",
+//   },
+//   {
+//     name: "Object007",
+//     bloom: true,
+//     textureFlipY: true,
+//     color: "#ffffff",
+//     textureRotation: 180,
+//     texture: "/img/test.png",
+//     videoTexture:
+//       "/video/6.EnvironmentalAwarenessCampaign,byProcter&Gamble.mp4",
+//   },
+//   {
+//     name: "Object008",
+//     bloom: true,
+//     textureFlipY: false,
+//     color: "#ffffff",
+//     textureRotation: 360,
+//     texture: "/img/test.png",
+//     videoTexture:
+//       "/video/7.StarPropertyAwards2022VirtualShowcase,byStarMediaGroup.mp4",
+//   },
+//   {
+//     name: "Object009",
+//     bloom: true,
+//     textureFlipY: true,
+//     color: "#ffffff",
+//     textureRotation: 180,
+//     texture: "/img/test.png",
+//     videoTexture: "/video/8.SabahVirtualTravelFair,bySabahTourismBoard.mp4",
+//   },
+//   {
+//     name: "Object010",
+//     bloom: true,
+//     textureFlipY: false,
+//     color: "#ffffff",
+//     textureRotation: 360,
+//     texture: "/img/test.png",
+//     videoTexture:
+//       "/video/9.VirtualExhibition&InternationalConference,byUniversityScienceMalaysia.mp4",
+//   },
+//   {
+//     name: "Object011",
+//     bloom: true,
+//     textureFlipY: true,
+//     color: "#ffffff",
+//     textureRotation: 180,
+//     texture: "/img/test.png",
+//     videoTexture: "/video/10.VirtualSalesLobbybydr.MCTbyKevolve.mp4",
+//   },
+//   {
+//     name: "Object012",
+//     bloom: true,
+//     textureFlipY: false,
+//     color: "#ffffff",
+//     textureRotation: 360,
+//     texture: "/img/test.png",
+//     videoTexture:
+//       "/video/11.VirtualStationeryStore,byNavneetEducationLimited.mp4",
+//   },
+//   {
+//     name: "Object013",
+//     bloom: true,
+//     textureFlipY: true,
+//     color: "#ffffff",
+//     textureRotation: 180,
+//     texture: "/img/test.png",
+
+//     videoTexture: "/video/12.EdenVirtualWorld,EdenlogyPteLtd.mp4",
+//   },
+//   {
+//     name: "Object014",
+//     bloom: true,
+//     textureFlipY: false,
+//     color: "#ffffff",
+//     textureRotation: 360,
+//     texture: "/img/test.png",
+
+//     videoTexture:
+//       "/video/13.KualaLumpurVirtualPhotographyFestival,byPCPPublications.mp4",
+//   },
+//   {
+//     name: "Object015",
+//     bloom: true,
+//     textureFlipY: true,
+//     color: "#ffffff",
+//     textureRotation: 180,
+//     texture: "/img/test.png",
+
+//     videoTexture:
+//       "/video/14.VirtualAngelicaShowUnite-Launching,byJohorLand.mp4",
+//   },
+//   {
+//     name: "Object016",
+//     bloom: true,
+//     textureFlipY: false,
+//     color: "#ffffff",
+//     textureRotation: 360,
+//     texture: "/img/test.png",
+
+//     videoTexture:
+//       "/video/15.HorizonSquareVirtualShowcase,byTopHillsRealty(M)Sdn.Bhd..mp4",
+//   },
+//   {
+//     name: "Object017",
+//     bloom: true,
+//     textureFlipY: true,
+//     color: "#ffffff",
+//     textureRotation: 180,
+//     texture: "/img/test.png",
+
+//     videoTexture: "/video/16.VirtualBazaar(Localised),ByTheRefectory.mp4",
+//   },
+//   {
+//     name: "Object018",
+//     bloom: true,
+//     textureFlipY: false,
+//     color: "#ffffff",
+//     textureRotation: 360,
+//     texture: "/img/test.png",
+
+//     videoTexture: "/video/17.VirtualBistroBar,byMemeBistroBar.mp4",
+//   },
+// ];
 
 // GAME.JS
 const panelFrame = [

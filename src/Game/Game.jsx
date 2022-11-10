@@ -18,11 +18,13 @@ import {
   Trigger,
   LingoEditor,
   useWindowSize,
+//   Enviroment,
   World,
 } from "lingo3d-react";
 
 import LightArea from "../component/World/LightArea";
-import { panelObj } from "../../public/dummy/dummy";
+// import { panelObj } from "../../public/dummy/dummy";
+import { panelObj } from "../tvpanel/tvpanel";
 
 
 const Game = () => {
@@ -37,8 +39,8 @@ const Game = () => {
     if (!dummy) return;
 
     setArrowPosition(e.point);
-    dummy.lookTo(e.point.x, undefined, e.point.z, 0.1);
-    dummy.moveTo(e.point.x, undefined, e.point.z, 14);
+    dummy.lookTo(e.point.x, undefined, e.point.z, 0.2);
+    dummy.moveTo(e.point.x, undefined, e.point.z, 15);
     setRunning(true);
 
     dummy.onMoveToEnd = () => {
@@ -49,10 +51,11 @@ const Game = () => {
   return (
     <>
       <World>
-        {/* <LingoEditor /> */}
+        <LingoEditor />
         {/* <Library /> */}
         {/* <Toolbar /> */}
         {/* <Editor /> */}
+        {/* <Enviroment /> */}
         <Stats />
         <Setup
           defaultLightScale={false}
@@ -85,12 +88,10 @@ const Game = () => {
                   key={idTv}
                   name={item?.name}
                   bloom={item?.bloom}
-                  // texture={item?.texture}
+                //   texture={item?.texture}
                   // texture={`${viteBaseUrl}/${item?.texture}`}
-                  textureFlipY={item?.textureFlipY}
-                  textureRotation={
-                    item?.textureRotation
-                  }
+                //   textureFlipY={item?.textureFlipY}
+                //   textureRotation={item?.textureRotation}
                   videoTexture={`/${item?.videoTexture}`}
                   color={item?.color}
                   emissiveColor="#626262"
@@ -148,7 +149,7 @@ const Game = () => {
             y={0}
             z={0}
           />
-          {/* <DirectionalLight intensity={0.4} color="white"></DirectionalLight> */}
+          <DirectionalLight intensity={0.6} color="white"></DirectionalLight>
         </ThirdPersonCamera>
         {running && (
           <>
