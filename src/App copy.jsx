@@ -1,29 +1,3 @@
-import {
-  Cube,
-  //   Dummy,
-  //   Model,
-  //   Setup,
-  //   SvgMesh,
-  //   ThirdPersonCamera,
-  //   World,
-  //   types,
-  //   usePreload,
-  //   useWindowSize,
-  //   Stats,
-  //   DirectionalLight,
-  //   Find,
-  //   HTML,
-  //   useSpring,
-  //   Trigger,
-  //   Group,
-  //   Circle,
-  //   Audio,
-  //   Editor,
-  LingoEditor,
-  //   Library,
-  //   Toolbar,
-  //   SceneGraph,
-} from "lingo3d-react";
 import { useLayoutEffect, useRef, useState } from "react";
 import "./App.css";
 
@@ -52,6 +26,9 @@ import {
   Circle,
   DirectionalLight,
   Dummy,
+  Cylinder,
+  Torus,
+
   Find,
   Group,
   HTML,
@@ -61,36 +38,41 @@ import {
   SvgMesh,
   ThirdPersonCamera,
   Trigger,
-  types,
+  LingoEditor,
   usePreload,
   useSpring,
   useWindowSize,
   World,
 } from "lingo3d-react";
 
+import LightArea from "./component/World/LightArea";
+import { panelObj } from "../public/dummy/dummy";
+
+
+
 const Game = () => {
   const { width } = useWindowSize();
-  const dummyRef = useRef<types.Dummy>(null);
-  const npcRef = useRef<types.Model>(null);
-  const boothRef = useRef<types.Model>(null);
+  const dummyRef = useRef(null);
+  const npcRef = useRef(null);
+  const boothRef = useRef(null);
 
-  const [isInstruction, setInstruction] = useState<any>();
-  const [running, setRunning] = useState<any>(false);
-  const [arrowPosition, setArrowPosition] = useState<any>({ x: 0, y: 0, z: 0 });
-  const [mouseOver, setMouseOver] = useState<any>(false);
-  const [modalState, setModalState] = useState<any>(false);
+  const [isInstruction, setInstruction] = useState();
+  const [running, setRunning] = useState(false);
+  const [arrowPosition, setArrowPosition] = useState({ x: 0, y: 0, z: 0 });
+  const [mouseOver, setMouseOver] = useState(false);
+  const [modalState, setModalState] = useState(false);
 
-  const [addToCartData, setAddToCartData] = useState<any>();
+  const [addToCartData, setAddToCartData] = useState();
 
   const [boothState, setboothState] = useState({ id: 0 });
   const [modal, setModal] = useState(false);
-  const [htmlFor, setHtmlFor] = useState<any>();
-  const [navBar, setNavBar] = useState<any>(false);
+  const [htmlFor, setHtmlFor] = useState();
+  const [navBar, setNavBar] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [positionPlayerX, setPositionPlayerX] = useState<any>();
-  const [positionPlayerZ, setPositionPlayerZ] = useState<any>();
+  const [positionPlayerX, setPositionPlayerX] = useState();
+  const [positionPlayerZ, setPositionPlayerZ] = useState();
 
   const x = searchParams.get("x");
   const z = searchParams.get("z");
@@ -104,7 +86,7 @@ const Game = () => {
   const zSpring = useSpring({ to: camZ, bounce: 0 });
 
   //player movement
-  const handleClick = (e: types.MouseEvent) => {
+  const handleClick = (e) => {
     const dummy = dummyRef.current;
     if (!dummy) return;
 
@@ -119,7 +101,7 @@ const Game = () => {
   };
 
   //Modal control from child com Booth
-  const sendDataToParentBooth = (index: any) => {
+  const sendDataToParentBooth = (index) => {
     if (index?.id != null) {
       setboothState(index);
     }
@@ -155,7 +137,6 @@ const Game = () => {
     setPositionPlayerZ(z);
   }, [x, z]);
 
-  // console.log("boothRef", boothRef);
 
   return (
     <>
@@ -187,10 +168,10 @@ const Game = () => {
           htmlFor == "video"
             ? "video"
             : boothState?.id > 0
-            ? "booth"
-            : navBar
-            ? "navBar"
-            : null
+              ? "booth"
+              : navBar
+                ? "navBar"
+                : null
         }
       />
 
@@ -199,41 +180,13 @@ const Game = () => {
         {/* <Library /> */}
         {/* <Toolbar /> */}
         {/* <Editor /> */}
-        {/* <Stats /> */}
+        <Stats />
         <Setup
-          //SSAA = bestquality(hit GPU)
-          //SMAA = care performace
-          // antiAlias="SSAA"
-
-          defaultLightScale={1.1}
-          // skybox="skyBox/sky.jpg"
+          defaultLightScale={false}
           pixelRatio={5}
         />
-        {/* <Model
-          ref={boothRef}
-          physics="map"
-          width={245.36}
-          depth={245.36}
-          scaleX={10}
-          scaleY={20}
-          scaleZ={20}
-          // y={2516.33}
-          x={-20145.77}
-          y={492.05}
-          scale={10}
-          src="maps/boothsample-v1.glb"
-        /> */}
-        {/* <Model
-          toon
-          src="sky/sky4.glb"
-          x={-2956.9}
-          z={1.0}
-          y={14655.96}
-          scale={200.0}
-          physics="map"
-          animations={{ idle: "sky/sky4.glb" }}
-          animation="clouds2_lambert1_0Action"
-        ></Model> */}
+
+        <LightArea />
         <Model
           physics="map"
           width={245.36}
@@ -246,11 +199,50 @@ const Game = () => {
           y={0}
           z={0}
           scale={70}
-          // src="maps/cartoonlowpoly14.glb"
           src="maps/tunnel_baked.glb"
           animation="Object_48Action.002"
           onClick={handleClick}
-        />
+        >
+
+          {panelObj?.map((item, idTv) => {
+            return (
+              <>
+                <Find
+                  key={idTv}
+                  name={item?.name}
+                  bloom={item?.bloom}
+                  // texture={item?.texture}
+                  // texture={`${viteBaseUrl}/${item?.texture}`}
+                  textureFlipY={item?.textureFlipY}
+                  textureRotation={
+                    item?.textureRotation
+                  }
+                  videoTexture={`/${item?.videoTexture}`}
+                  color={item?.color}
+                  emissiveColor="#626262"
+                  emissiveIntensity={0.3}
+                  onClick={(e) => {
+                    movePlayer(e)
+                  }}
+                ></Find>
+              </>
+            )
+          })}
+
+
+
+          <Find bloom name="Line001" color="#ffffff" />
+
+          <Find bloom name="Box050" color="#ffffff" />
+          <Find bloom name="Box057" color="#ffffff" />
+
+          <Find bloom name="ceilinglight" color="#ffffff" />
+
+          <Find bloom name="Box050" color="#ffffff" />
+          <Find bloom name="Box057" color="#ffffff" />
+          <Find bloom name="Box058" color="#ffffff" />
+
+        </Model>
         <ThirdPersonCamera
           mouseControl={modal && !mouseOver ? false : "drag"}
           active={modal ? false : true}
@@ -269,157 +261,85 @@ const Game = () => {
             name="player"
             ref={dummyRef}
             scale={3.8}
-            src="3dCharacter/back/character.fbx"
+            src="3dCharacter/new/character.fbx"
             physics="character"
             animations={{
-              idle: "3dCharacter/back/BreathingIdle.fbx",
-              running: "3dCharacter/back/Running.fbx",
+              idle: "3dCharacter/new/BreathingIdle.fbx",
+              running: "3dCharacter/new/Running.fbx",
             }}
             animation={running ? "running" : "idle"}
             width={50}
             depth={50}
-            // x={positionPlayerX ? positionPlayerX : 0}
-            // z={positionPlayerZ ? positionPlayerZ : 0}
             rotationY={69.74}
-            //area booth
-            // x={-20420.6}
-            // y={221.11}
-            // z={3651.88}
 
-            //area center
-            // x={50}
-            // y={194.31}
-            // z={50}
-
-             x={0}
-             y={0}
-             z={0}
+            x={0}
+            y={0}
+            z={0}
           />
           <DirectionalLight intensity={0.4} color="white"></DirectionalLight>
         </ThirdPersonCamera>
         {running && (
-          <SvgMesh
-            width={72.99}
-            height={100}
-            depth={100}
-            scaleX={-0.82}
-            scaleZ={0.19}
-            src="arrow.svg"
-            color="#ff4e4e"
-            x={arrowPosition.x}
-            y={arrowPosition.y + 50}
-            z={arrowPosition.z}
-            animation={{
-              rotationY: [0, 45, 90, 135, 180, 225, 270, 315, 360],
-            }}
-          />
+          <>
+            <Group>
+              <Torus
+                x={arrowPosition.x}
+                y={arrowPosition.y + 10}
+                z={arrowPosition.z}
+                height={100}
+                depth={100}
+                width={72.99}
+                emissiveColor="#ff0000"
+                color="#ff4e4e"
+                rotationX={90}
+                animation={{
+                  scale: [0, 1, 1, 0],
+                }}
+                scaleX={0.21}
+                scaleY={0.24}
+                scaleZ={0.13}
+                normalScale={{ x: 1, y: 1 }}
+              />
+              <Torus
+                x={arrowPosition.x}
+                y={arrowPosition.y + 10}
+                z={arrowPosition.z}
+                height={100}
+                depth={100}
+                width={72.99}
+                emissiveColor="#ff0000"
+                color="#ff4e4e"
+                rotationX={90}
+                animation={{
+                  scale: [0, 1, 1, 0],
+                }}
+                scaleX={0.5}
+                scaleY={0.5}
+                scaleZ={1.64}
+                normalScale={{ x: 1, y: 1 }}
+              />
+              <Cylinder
+                bloom
+                x={arrowPosition.x}
+                y={arrowPosition.y + 10}
+                z={arrowPosition.z}
+                height={200}
+                width={72.99}
+                depth={100}
+                emissiveColor="#ff0000"
+                color="#ff4e4e"
+                animation={{
+                  scale: [0, 0.09, 0.05, 0],
+                }}
+                scaleX={0.02}
+                scaleY={0.46}
+                scaleZ={0.03}
+                normalScale={{ x: 1, y: 1 }}
+              />
+            </Group>
+          </>
         )}
 
-        <Group
-          //area booth
-          x={-20876.51}
-          y={152.77}
-          z={4501.97}
 
-          //area sff house
-          // x={-2400.25}
-          // y={1.61}
-          // z={5611.74}
-        >
-          <Circle
-            x={-2400.25}
-            y={1.61}
-            z={5611.74}
-            rotationX={270.0}
-            scale={2.0}
-            opacity={mouseOver ? 1 : 0}
-            color={mouseOver ? "#ff0000" : "transparent"}
-            normalScale={{ x: 1, y: 1 }}
-            innerVisible={true}
-          />
-          <Trigger
-            targetIds="player"
-            radius={500}
-            onEnter={() => {
-              setMouseOver(true);
-            }}
-            onExit={() => {
-              setMouseOver(false);
-            }}
-          />
-        </Group>
-
-        <Model
-          ref={npcRef}
-          src="npc/npc1.glb"
-          physics="character"
-          outline={mouseOver}
-          scaleX={20}
-          scaleY={20}
-          scaleZ={20}
-          scale={3.8}
-          rotationY={180.0}
-          //area booth
-          x={-20876.51}
-          y={152.77}
-          z={4501.97}
-          //center
-          // x={-2462.69}
-          // y={193.35}
-          // z={6111.53}
-          animation="Armature|mixamo.com|Layer0"
-        >
-          <Find
-            name="Cube.001"
-            onMouseOver={() => {
-              setMouseOver(true);
-              setboothState({ id: 0 });
-              setHtmlFor("video");
-            }}
-            onMouseOut={() => {
-              setMouseOver(false);
-              setHtmlFor("");
-            }}
-            onClick={() => {
-              setModal(true);
-            }}
-          >
-            {mouseOver && (
-              <HTML>
-                <div>
-                  <Button
-                    sx={{
-                      color: "white",
-                      px: 1,
-                      background: " rgba( 255, 255, 255, 0.25 )",
-                      boxShadow: "0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-                      backdropFilter: "blur( 4px )",
-                      borderRadius: "10px",
-                      border: "1px solid rgba( 255, 255, 255, 0.18 )",
-                    }}
-                    variant="text"
-                    size="small"
-                    endIcon={<TouchAppTwoToneIcon />}
-                  >
-                    Click
-                  </Button>
-                </div>
-              </HTML>
-            )}
-          </Find>
-        </Model>
-
-        {/* <Cube
-          x={-3136.47}
-          y={632.18}
-          z={-1524.66}
-          mass={10}
-          physics={"map"}
-          slippery={true}
-          scale={20.0}
-        /> */}
-
-        <AllBooth sendDataToParent={sendDataToParentBooth} />
       </World>
     </>
   );
