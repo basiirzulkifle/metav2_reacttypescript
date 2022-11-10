@@ -148,7 +148,7 @@ const Game = () => {
             y={0}
             z={0}
           />
-          <DirectionalLight intensity={0.4} color="white"></DirectionalLight>
+          {/* <DirectionalLight intensity={0.4} color="white"></DirectionalLight> */}
         </ThirdPersonCamera>
         {running && (
           <>
