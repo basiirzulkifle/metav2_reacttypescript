@@ -4,7 +4,8 @@ import ResponsiveDrawer from '../component/Drawer'
 const Iframe = ({ url }) => {
     return (
         <>
-            <ResponsiveDrawer />
+            {/* Basiir comment kejap 221110 */}
+            {/* <ResponsiveDrawer /> */}
             <iframe
                 style={{
                     display: 'block',

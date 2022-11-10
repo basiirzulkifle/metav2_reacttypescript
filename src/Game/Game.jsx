@@ -88,10 +88,10 @@ const Game = () => {
                   key={idTv}
                   name={item?.name}
                   bloom={item?.bloom}
-                //   texture={item?.texture}
+                  // texture={item?.texture}
                   // texture={`${viteBaseUrl}/${item?.texture}`}
-                //   textureFlipY={item?.textureFlipY}
-                //   textureRotation={item?.textureRotation}
+                  // textureFlipY={item?.textureFlipY}
+                  // textureRotation={item?.textureRotation}
                   videoTexture={`/${item?.videoTexture}`}
                   color={item?.color}
                   emissiveColor="#626262"

@@ -73,7 +73,8 @@ const World = () => {
                     display: isGame ? "none" : "block",
                 }}
             />
-            <ResponsiveDrawer />
+            {/* Basiir comment kejap 221110 */}
+            {/* <ResponsiveDrawer /> */}
             <Game />
         </>
     );
