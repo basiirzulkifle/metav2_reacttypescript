@@ -5,7 +5,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 
 import World from "./Game/World";
-import World2 from "./Game/World2";
+// import World2 from "./Game/World2";
 import Theme from "./Theme";
 import Iframe from "./page/Iframe";
 import Nomenu from "./page/Nomenu";
@@ -24,7 +24,7 @@ function App() {
         <BrowserRouter basename={`${viteBaseUrl}`}>
           <Routes>
             <Route path="/" element={<World />} />
-            <Route path="/game" element={<World2 />} />
+            {/* <Route path="/game" element={<World2 />} /> */}
             <Route
               path="portfolio"
               element={<Nomenu url={"https://360xp.co/ismartwebsite/"} />}
